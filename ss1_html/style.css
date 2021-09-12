@@ -1,0 +1,23 @@
+body{
+    color: rosybrown;
+    text-align: center;
+}
+h1 {
+    color: green;
+    font-size: 60px;
+    text-align: left;
+}
+ul {
+    list-style-type: none;
+    display: flex;
+}
+li {
+    margin: 15px;
+}
+a {
+    text-decoration: none;
+}
+p {
+    text-align: left;
+    color: black;
+}
