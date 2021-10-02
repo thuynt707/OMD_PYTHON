@@ -11,10 +11,10 @@ def count_char_type1(sentence):
         elif i >= '0' and i <= '9':
             digit += 1
         letter = upper + lower
-    print("Letter: " + str(letter))
-    print("Upper case: " + str(upper))
-    print("Lower case: " + str(lower))
-    print("Digit: " + str(digit))
+    print("Number of Letter: " + str(letter))
+    print("Number of Uppercase: " + str(upper))
+    print("Number of Lowercase: " + str(lower))
+    print("Number of Digit: " + str(digit))
     char_dict = {"LETTERS": letter, "CASE": {"UPPERCASE": upper, "LOWER": lower}, "DIGIT": digit}
     return char_dict
 

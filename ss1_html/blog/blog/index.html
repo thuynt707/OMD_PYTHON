@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Tiêu đề trang -->
+    <title>HTML Introduction</title>
+
+    <!-- Nhúng font Roboto của Google, copy code nhúng ở trang https://fonts.google.com/specimen/Roboto -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Nhúng CSS -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <!-- Phần đầu trang -->
+    <header>
+      <!-- Menu của website -->
+      <nav class="container">
+        <!-- Để đơn giản thì chỉ đặt 1 đoạn text coi như tên website (thường dùng ảnh logo) -->
+        <!-- Dùng thẻ a vì người ta thường bấm vào logo để quay về trang chủ -->
+        <a href="/" class="logo text-center">My Blog</a>
+      </nav>
+    </header>
+
+    <main class="container">
+      <!-- Nội dung chính của trang, có thể dùng thẻ main hoặc thẻ div cũng được -->
+      <article>
+        <!-- Trong 1 trang chỉ nên có 1 thẻ h1 là tiêu đề chính -->
+        <h1>HTML Introduction</h1>
+
+        <div class="article-meta-data">
+          <!-- Dùng thẻ a để có thể bấm vào chuyển qua trang bài viết theo tác giả, dấu # là để tạm vì chưa có link -->
+          By <a href="#">Robin Huy</a>
+          <span class="article-time">6 hours ago</span>
+        </div>
+
+        <h2>What is HTML?</h2>
+
+        <ul>
+          <li>HTML stands for Hyper Text Markup Language</li>
+          <li>HTML is the standard markup language for creating Web pages</li>
+          <li>HTML describes the structure of a Web page</li>
+          <li>HTML consists of a series of elements</li>
+          <li>HTML elements tell the browser how to display the content</li>
+          <li>
+            HTML elements label pieces of content such as "this is a heading",
+            "this is a paragraph", "this is a link", etc.
+          </li>
+        </ul>
+
+        <h2>Web Browsers</h2>
+
+        <p>
+          The purpose of a web browser (Chrome, Edge, Firefox, Safari) is to
+          read HTML documents and display them correctly.
+        </p>
+
+        <p>
+          A browser does not display the HTML tags, but uses them to determine
+          how to display the document:
+        </p>
+
+        <p>
+          <img alt="View in Browser" src="./img/img_chrome.png" />
+        </p>
+
+        <h2>HTML Page Structure</h2>
+
+        <p>Below is a visualization of an HTML page structure:</p>
+
+        <p>
+          <img alt="HTML Page Structure" src="./img/HTML_page_structure.jpg" />
+        </p>
+
+        <p>
+          <strong>Note:</strong> The content inside the &lt;body&gt; section
+          (the white area above) will be displayed in a browser. The content
+          inside the &lt;title&gt; element will be shown in the browser's title
+          bar or in the page's tab.
+        </p>
+      </article>
+
+      <div class="section">
+        <div class="section-title">Categories</div>
+
+        <div class="section-content">
+          <a href="#" class="tag">Web</a>
+          <a href="#" class="tag">Programming</a>
+        </div>
+      </div>
+    </main>
+
+    <!-- Phần chân trang -->
+    <footer>
+      <div class="container text-center">Made by Robin Huy © 2021</div>
+    </footer>
+  </body>
+</html>

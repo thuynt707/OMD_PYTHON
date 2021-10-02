@@ -1,0 +1,130 @@
+/* Selector * áp dụng cho toàn bộ thẻ trong trang: https://www.w3schools.com/cssref/sel_all.asp */
+* {
+  /* Áp dụng box-sizing cho dễ layout: https://www.w3schools.com/css/css3_box-sizing.asp */
+  box-sizing: border-box;
+}
+
+/* Loại bỏ margin mặc định của thẻ body và thiết lập font sử dụng font Roboto của Google */
+body {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  color: #5c5c5c;
+}
+
+h1,
+h2 {
+  color: #3f3f3f;
+  font-weight: 500;
+}
+
+h1 {
+  font-size: 30px;
+}
+
+h2 {
+  font-size: 24px;
+}
+
+img {
+  /* Giới hạn kích thước tối đa của ảnh để ảnh không tràn ra khỏi khung khi ảnh quá to */
+  max-width: 100%;
+}
+
+li {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+a {
+  color: #3f3f3f;
+  font-weight: 400;
+  text-decoration:none;
+}
+
+/* Style khi di chuột lên thẻ a (hover selector https://www.w3schools.com/cssref/sel_hover.asp) */
+a:hover {
+  color: #47c9e5;
+}
+
+header {
+  margin-bottom: 40px;
+  padding: 20px;
+  box-shadow: 0px 1px 1px 0 rgb(0 0 0 / 16%), 0 1px 5px 0 rgb(0 0 0 / 12%);
+}
+
+footer {
+  margin-top: 40px;
+  padding: 30px;
+  background-color: #262626;
+  color: #ffffff;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* Giới hạn chiều rộng khung và căn giữa cho đẹp và dễ đọc nội dung ở màn hình lớn */
+.container {
+  max-width: 950px;
+  margin: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.logo {
+  display: block;
+  font-size: 36px;
+  font-weight: 900;
+}
+
+.logo:hover {
+  color: inherit;
+}
+
+.article-meta-data {
+  font-size: 14px;
+  border-bottom: 1px solid #e5e5e5;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+
+.article-time {
+  padding-left: 14px;
+}
+
+.section {
+  border-top: 1px solid #e5e5e5;
+  padding-top: 20px;
+  margin: 20px 0;
+}
+
+.section-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.section-content {
+  margin-bottom: 15px;
+}
+
+.tag {
+  display: inline-block;
+  margin-right: 10px;
+  padding: 8px 12px;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: inherit;
+  background-color: #f0f0f0;
+  border: 3px solid #fff;
+  border-radius: 5px;
+  transition: 0.3s all ease-in-out;
+}
+
+.tag:hover {
+  color: #ffffff;
+  background-color: #47c9e5;
+}

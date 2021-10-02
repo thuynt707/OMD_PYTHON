@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM</title>
+  </head>
+  <body>
+    <main>
+      <article>
+        <h1>Officiis quaerat inventore nemo quae</h1>
+
+        <p id="p1">
+          Cum corrupti veritatis culpa, alias esse, minima architecto dicta nisi
+          aperiam exercitationem, dignissimos sapiente! Reprehenderit magnam sit
+          necessitatibus eius officia, eligendi doloribus.
+        </p>
+
+        <p id="p2">
+          Ratione quisquam ab asperiores, odit provident harum consectetur autem
+          consequatur natus, error optio perspiciatis distinctio ipsam voluptas
+          saepe expedita dolore ipsum est.
+        </p>
+
+        <p id="p3">
+          Commodi quam quaerat deserunt sed cumque aliquam quos nostrum.
+          Molestias placeat aut soluta fugit? Molestiae dolores voluptate
+          aperiam, quasi hic porro quam.
+        </p>
+      </article>
+
+      <div>
+        <button onclick="changeColor()">1. changeColor()</button>
+        <button onclick="changeBgColor('#ddd')">
+          2. changeBgColor('#ddd')
+        </button>
+        <button onclick="copyContent('p2', 'p3')">
+          3. copyContent('p1', 'p2')
+        </button>
+        <button onclick="changeFontSize(20)">4. changeFontSize(20)</button>
+        <button onclick="increaseFontSize('p1')">
+          5. increaseFontSize('p1')
+        </button>
+        <button onclick="decreaseFontSize('p1')">
+          6. decreaseFontSize('p1')
+        </button>
+      </div>
+    </main>
+
+    <script>
+      // Lưu các element tìm được vào các biến global để sử dụng được ở tất cả các hàm
+      const paragraph1 = document.getElementById("p1");
+      const paragraph2 = document.getElementById("p2");
+      const paragraph3 = document.getElementById("p3");
+
+      function changeColor() {
+        paragraph1.style.color = "green";
+        paragraph2.style.color = "yellow";
+        paragraph3.style.color = "red";
+      }
+
+      function changeBgColor(color) {
+        document.body.style.backgroundColor = color;
+      }
+
+      function copyContent(paragraphId1, paragraphId2) {
+        // Dùng innerHTML để copy được cả thẻ HTML bên trong như img, code, ...
+        const paragraph2Content =
+          document.getElementById(paragraphId2).innerHTML;
+        document.getElementById(paragraphId1).innerHTML = paragraph2Content;
+      }
+
+      function changeFontSize(size) {
+        // Có thể set fontSize cho body hoặc sử dụng vòng lặp
+        p1.style.fontSize = size + "px";
+        p2.style.fontSize = size + "px";
+        p3.style.fontSize = size + "px";
+      }
+
+      function increaseFontSize(paragraphId) {
+        const paragraph = document.getElementById(paragraphId);
+
+        // Lấy ra font-size hiện tại của đoạn văn (chỉ áp dụng nếu trước đó đã set font-size bằng JS)
+        // Có thể dùng các hàm xử lý chuỗi để tách số ra khỏi giá trị font-size, ở đây dùng parseFloat
+        const currentFontSize = parseFloat(paragraph.style.fontSize);
+
+        if (currentFontSize < 30) {
+          paragraph.style.fontSize = currentFontSize + 1 + "px";
+        }
+      }
+
+      function decreaseFontSize(paragraphId) {
+        const paragraph = document.getElementById(paragraphId);
+
+        // Lấy ra font-size hiện tại của đoạn văn (không cần set font-size bằng JS từ trước)
+        const currentFontSize = parseFloat(
+          window.getComputedStyle(paragraph).getPropertyValue("font-size")
+        );
+
+        if (currentFontSize > 10) {
+          paragraph.style.fontSize = currentFontSize - 1 + "px";
+        }
+      }
+    </script>
+  </body>
+</html>
