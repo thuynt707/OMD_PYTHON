@@ -41,7 +41,7 @@ class BankAccount:
         with open(json_file) as file:
             reader = json.load(file)
             for object in reader:
-                accounts.append(cls(object['account_number'], object['account_name'], int(object['balance'])))
+                accounts.append(cls(**object))
         return accounts 
     def __repr__(self):
         return f"Thong tin tai khoan: {self.get_account_number()} {self.get_account_name()} {self.get_balance()}"
