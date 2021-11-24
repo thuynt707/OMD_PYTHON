@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Homepage</title>
+        <!-- Liên kết đến các file khác như css, hình ảnh, ... trong thư mục static -->
+        <link
+            rel="stylesheet"
+            href="{{url_for('static', filename='style.css')}}"
+        />
+    </head>
+    <body>
+        <h1>Danh sách các bộ phim yêu thích</h1>
+
+        {# 
+            Jinja template 
+            {% %} - một câu lệnh python 
+            {{ }} - một biểu thức, in ra kết quả 
+        #} 
+        {% if not movies %}
+        <p>Khong co thong tin bo phim nay</p>
+
+        {% for id in movies %}
+        <div>
+            <h3>{{ movies[id]["title"] }}</h3>
+        </div>
+        {% endfor %}
+    </body>
+</html>

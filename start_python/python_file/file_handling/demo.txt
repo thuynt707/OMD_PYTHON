@@ -1,0 +1,3 @@
+Xin chào các bạn
+Hôm nay mình thực hành với đọc/ghi file
+Have fun
