@@ -1,21 +1,65 @@
-### Bài 1: Find pair
-# Cho list A chứa các số nguyên đã sắp xếp theo thứ tự tăng dần.
-# Vd A = [3, 6, 7, 9, 11, 12] và một số nguyên sum. Tìm tất cả các cặp số (a,b) trong mảng A có tổng bằng sum
-# vd ở đây nếu sum = 18 thì kết quả là [(7,11), (6,12)]. Nếu không có cặp số nào thỏa mãn thì in ra list rỗng []
+### Viết chương trình in ra thời gian đếm ngược đến XMas 2021 sau mỗi khoảng thời gian nhất định.
+import time
+from datetime import datetime
 
-def find_pair(A, sum):
-    i, j = 0, len(A)-1
-    result = []
-    while i < j:
-        s = A[i] + A[j]
-        if s == sum:
-            result.append((A[i],A[j]))
-            j -= 1
-        elif s < sum:
-            i += 1
-        else:
-            j -= 1
-    return result
+while True:
+    time.sleep(10)
+    XMAS_DATE = datetime(year=2021, month=12, day=24)
+    countdown = XMAS_DATE - datetime.now()
+    print(f"Countdown to Xmas 2021: {countdown}")
+    if countdown == 0:
+        break
 
-find_pair([3, 6, 7, 9, 11, 12], 18)
 
+### Viết chương trình trả ra từ điển với key là các số trong list, value là số lần xuất hiện của số trong list
+from collections import Counter
+my_list = [10, 21, 21, 40, 40, 52, 52, 1, 1, 2, 2, 2, 2, 11, 11, 11, 11, 25, 24, 24, 60, 40]
+c = Counter(my_list)
+print(c)
+
+### Hãy viết chương trình in ra các hình sau (dùng ký tự '*' và ký tự space) với n là số dòng. Vd: n = 4:
+#       *
+#     * *
+#   * * *
+# * * * *
+
+A=int(input('Enter a number: '))
+#Hinh 1
+print("Hinh 1")
+for i in range (1,A+1):
+    print('* '*i)
+
+#Hinh 2
+print("Hinh 2")
+for i in range (1,A+1):
+    print('* '*(A+1-i),'  '*(i-1))
+
+#Hinh 3
+print("Hinh 3")
+for i in range (1,A+1):
+    print('  '*(i-1),'* '*(A+1-i))
+
+#Hinh 4
+print("Hinh 4")
+for i in range (1,A+1):
+    print('  '*(A-i),'* '*i)
+
+#Hinh 5
+print("Hinh 5")
+for i in range (1,A+1):
+    print('  '*(A-i),'* '*(2*i-1),'  '*(A-i))
+
+#Hinh 6
+print('Hinh 6')
+for i in range (1,A+1):
+    print('* '*A)
+
+#Hinh 7
+print('Hinh 7')
+for i in range(1,A+1):
+    if i==1:
+        print('* '*A)
+    elif i in range(2,A):
+        print('* ', '  ' * (A - 3), '*')
+    else:
+        print('* ' * A)
