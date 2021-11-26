@@ -1,6 +1,9 @@
+import sys
+import os
+import db
+import error
 from deck import Deck
 from player import Player
-
 
 class Game:
     '''
@@ -13,9 +16,31 @@ class Game:
         self._playerList = []
         self.deck = Deck()
         self.winner = None
+        self.choices = {
+            '1': self.list_players,
+            '2': self.add_player,
+            '3': self.remove_player,
+            '4': self.dealing_card,
+            '5': self.flip_cards,
+            '6': self.last_game,
+            '7': self.history,
+            '8': self.quit
+        }
+
+    @property
+    def deck(self):
+        return self._deck
+
+    @property
+    def players(self):
+        return self._players
+
+    def cls(self):
+        os.system('cls' if os.name == 'nt' else 'clear')
 
     def setup(self):
         '''Khởi tạo trò chơi, nhập số lượng và lưu thông tin người chơi'''
+        self.cls()
         self._playerList = []
         inputPlayer = input('Nhap so luong nguoi choi:')
         inputPlayer = int(inputPlayer)
@@ -55,7 +80,7 @@ class Game:
         index_player = int(input())
         del self.players[index_player-1]
 
-    def deal_card(self):
+    def dealing_card(self):
         '''Chia bài cho người chơi'''
         self._deck = Deck()
         self._deck.build()
@@ -72,7 +97,7 @@ class Game:
         print('Da chia xong!')
         self._is_deal = True
 
-    def flip_card(self):
+    def flip_cards(self):
         '''Lật bài tất cả người chơi, thông báo người chiến thắng'''
         winner = None
         for player in self._playerList:
@@ -88,4 +113,56 @@ class Game:
         print(f'Nguoi chien thang:{winner._name}')
         self._winner = winner._name
         self._is_fliped = True
-    
+
+    def last_game(self):
+        if self.is_playing:
+            raise error.PlayingError()
+        else:
+            last_game, players = db.get_last_game()
+
+            print(last_game['play_at'])
+            print()
+
+            for p in players:
+                print(f'Tay chơi: {p["player"]}')
+                print(
+                    f'Bộ bài: {p["cards"]} Điểm: {p["point"]} Lá bài lớn nhất: {p["biggest_card"]}')
+                print()
+
+            print(f'🏆 Tay chơi chiến thắng: {last_game["winner"]} :)')
+
+    def history(self):
+        if self.is_playing:
+            raise error.PlayingError()
+        else:
+            total_game, records = db.history()
+            print(f'Hôm nay đã chơi: {total_game} ván bài 🤣\n')
+
+            for r in records:
+                print(f'{r["player"]:6} thắng {r["game_won"]} ván')
+
+    def run(self):
+        self.setup()
+        self.cls()
+
+        while True:
+            self.menu()
+
+            try:
+                c = input("> ")
+                choice = self.choices.get(c)
+                self.cls()
+
+                if choice:
+                    choice()
+                    print()
+                else:
+                    raise error.FunctionDoesNotExists()
+            except ValueError as e:
+                raise error.FunctionDoesNotExists()
+            except error.Error as e:
+                print(e.message)
+
+    def quit(self):
+        print("Have fun :)")
+        sys.exit()
