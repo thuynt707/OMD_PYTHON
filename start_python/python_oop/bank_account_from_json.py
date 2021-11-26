@@ -1,8 +1,6 @@
 import os
 import sys
-import csv
 import json
-import pprint
 
 current_dir = os.path.dirname(os.path.abspath(sys.argv[0]))
 csv_file = os.path.join(current_dir, "bank_accounts.csv")
@@ -54,24 +52,6 @@ class BankAccount:
             raise ValueError("Số tiền phải lớn hơn 0")
 
     @classmethod
-    def from_csv(cls, csv_file):
-        accounts = []
-
-        with open(csv_file) as file:
-            reader = csv.reader(file)
-
-            for account_number, account_name, balance in reader:
-                accounts.append(
-                    cls(account_number, account_name, int(balance)))
-
-        return accounts
-
-    # @classmethod
-    # def from_json(cls, json_file):
-    #     with open(json_file) as file:
-    #         return json.load(file, object_hook=lambda d: cls(**d))
-
-    @classmethod
     def from_json(cls, json_file):
         accounts = []
 
@@ -82,16 +62,6 @@ class BankAccount:
                 accounts.append(cls(**item))
 
         return accounts
-
-
-csv_accounts = BankAccount.from_csv(csv_file)
-
-print(f"| {'Number':9} | {'Account Name':15} | {'Balance':15} |")
-print(f"|{'-' * 11}|{ '-' * 17 }|{'-' * 17}|")
-for account in csv_accounts:
-    account.display()
-
-print()
 
 json_accounts = BankAccount.from_json(json_file)
 

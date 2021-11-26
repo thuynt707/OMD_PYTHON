@@ -60,16 +60,19 @@ class Fraction:
             self.dr = int(self.dr / n)
 
 
-fr = Fraction(1, 2)
+fr1 = Fraction(0, 2)
+fr2 = Fraction(1, 0)
+fr3 = Fraction(2, 1)
+fr4 = Fraction(1, 2)
 other = Fraction(1.5, -3)
-print(fr, other)
+print(fr1, fr2, fr3, fr4, other)
 
 print()
 
-print(fr + other)
-print(fr - other)
-print(fr * other)
-print(fr / other)
+print(fr4 + other)
+print(fr4 - other)
+print(fr4 * other)
+print(fr4 / other)
 
 print()
 
