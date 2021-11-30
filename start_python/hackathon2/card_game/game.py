@@ -13,8 +13,11 @@ class Game:
     '''
 
     def __init__(self):
+        self.is_playing = False
+        self.is_dealt = False
+        self.is_flipped = False
         self._playerList = []
-        self.deck = Deck()
+        self._deck = Deck()
         self.winner = None
         self.choices = {
             '1': self.list_players,
@@ -115,38 +118,30 @@ class Game:
         self._is_fliped = True
 
     def last_game(self):
-        if self.is_playing:
-            raise error.PlayingError()
-        else:
-            last_game, players = db.get_last_game()
-
-            print(last_game['play_at'])
-            print()
-
-            for p in players:
-                print(f'Tay chơi: {p["player"]}')
-                print(
-                    f'Bộ bài: {p["cards"]} Điểm: {p["point"]} Lá bài lớn nhất: {p["biggest_card"]}')
-                print()
-
-            print(f'🏆 Tay chơi chiến thắng: {last_game["winner"]} :)')
+        game, logs = db.get_last_game()
+        if game is not None:
+            print ("Thời gian: ", game['play_at'], ' Người chiến thắng: ', game['winner'])
+            for log in logs:
+                print (f"Người chơi {log['player']}: {log['cards']}", end="")                
+                print (f", Tổng điểm {log['point']}, lá bài lớn nhất {log['biggest_card']}") 
 
     def history(self):
-        if self.is_playing:
-            raise error.PlayingError()
-        else:
-            total_game, records = db.history()
-            print(f'Hôm nay đã chơi: {total_game} ván bài 🤣\n')
-
-            for r in records:
-                print(f'{r["player"]:6} thắng {r["game_won"]} ván')
+        historys = db.history()
+        list_str = ""
+        count_all = 0
+        if historys is not None:
+            for history in historys:
+               count_all += history['count']
+               list_str += f"{history['winner']} thắng {history['count']} ván\n"   
+        print (f"Hôm nay đã chơi: {count_all} ván")     
+        print (list_str)
 
     def run(self):
         self.setup()
         self.cls()
 
         while True:
-            self.menu()
+            self.guide()
 
             try:
                 c = input("> ")
