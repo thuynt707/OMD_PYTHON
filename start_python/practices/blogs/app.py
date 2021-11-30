@@ -1,6 +1,6 @@
 from os import error
 from flask import Flask, render_template, Response, request, redirect
-
+import db
 #from hackathon_3.includes.db import get_all
 app = Flask(__name__)
 

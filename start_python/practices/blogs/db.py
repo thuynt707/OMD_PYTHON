@@ -1,12 +1,7 @@
 '''Kết nối CSDL'''
 import mysql.connector as mysql
 import pymysql
-'''db = pymysql.connect(
-    host = "remotemysql.com",
-    user = "UyMDXcxEoz",
-    passwd = "lFJmWnNbEC",
-    database = "UyMDXcxEoz"
-)'''
+
 db = pymysql.connect(
     host = "localhost",
     user = "root",
